@@ -1,0 +1,67 @@
+// Variables
+$primary-color: #f8f9fa;
+$secondary-color: #6c757d;
+$bg-color: #f8f9fa;
+$text-light: #fff;
+
+// Global Styles
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: $bg-color;
+    color: $secondary-color;
+}
+
+.home-section {
+    background-color: $primary-color;
+    color: $text-light;
+}
+
+.projects-section {
+    background-color: $bg-color;
+    padding: 3rem 0;
+}
+.card {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.card-img-top {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-body {
+    padding: 15px;
+}
+
+.card-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.card-text {
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+.btn-sm {
+    margin: 2px;
+}
+.card-img-top {
+    width: 100%; /* Ensures the image spans the full width of the card */
+    height: 200px; /* Fixed height for consistency */
+    object-fit: cover; /* Ensures the image retains aspect ratio and fills the area */
+    border-top-left-radius: 10px; /* Matches card border radius */
+    border-top-right-radius: 10px; /* Matches card border radius */
+}

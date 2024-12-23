@@ -1,499 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Judith Waithera's Portfolio">
-    <title>Portfolio | Judith Waithera</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-    <style>
-        /* General Reset */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            transition: background-color 0.3s, color 0.3s;
-        }
-
-        /* Sticky Navigation Bar */
-        .navbar {
-            z-index: 1000;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            background-color: var(--nav-bg) !important;
-        }
-
-        /* Section Styles */
-        section {
-            padding: 100px 0;
-        }
-
-        /* Home Section */
-        .home-section {
-            background: var(--primary-color);
-            color: var(--text-color);
-            text-align: center;
-            padding: 100px 0;
-            position: relative;
-            overflow: hidden;
-            border-bottom: 3px solid var(--secondary-color);
-        }
-
-        .home-section h1 {
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-        }
-
-        .home-section .intro-text {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            color: var(--text-color);
-        }
-
-        .home-section p {
-            font-size: 1.25rem;
-            color: var(--text-color);
-            margin-bottom: 30px;
-        }
-
-        /* Button Style */
-        .home-section .btn {
-            font-size: 1.1rem;
-            padding: 15px 25px;
-            background-color: #fff;
-            color: var(--primary-color);
-            border: none;
-            border-radius: 50px;
-            transition: background-color 0.3s, transform 0.3s;
-        }
-
-        .home-section .btn:hover {
-            background-color: #00c89e; /* Hover effect, because who doesn't love a little hover magic? */
-            transform: scale(1.05); /* Make it grow a little! */
-        }
-
-        .home-section .btn:focus {
-            outline: none;
-        }
-
-        .home-section img {
-            max-width: 100%;
-            height: auto;
-        }
-
-        /* About Section */
-        .about-section {
-            padding: 50px 0;
-            background-color: var(--white);
-        }
-
-        .about-section h1 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            color: var(--primary-color);
-        }
-
-        .about-img {
-            width: 150px;
-            height: 150px;
-            margin: 20px auto;
-            overflow: hidden;
-            border-radius: 50%;
-            border: 4px solid var(--primary-color);
-        }
-
-        .about-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-
-        .about-text p {
-            color: var(--dark-text);
-        }
-
-        /* Projects Section */
-        .projects-section {
-            background: var(--light-background);
-        }
-
-        /* Skills Section */
-        .skills-section {
-            padding: 50px 0;
-            background-color: var(--secondary-color);
-            color: var(--white);
-            text-align: center;
-        }
-
-        .skills-header h6 {
-            color: var(--primary-color);
-            font-size: 16px;
-            text-transform: uppercase;
-            margin-bottom: 10px;
-        }
-
-        .skills-header h1 {
-            font-size: 36px;
-            margin-bottom: 40px;
-        }
-
-        .skills-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-        }
-
-        .skills-card {
-            background-color: var(--card-bg);
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-        }
-
-        .skills-card h3 {
-            font-size: 20px;
-            margin-bottom: 20px;
-            color: var(--primary-color);
-        }
-
-        .skills-card ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .skills-card ul li {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 15px;
-            font-size: 16px;
-            padding: 8px 0;
-        }
-
-        .skill-badge {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            transition: all 0.3s ease;
-        }
-
-        .skills-card:hover .skill-badge {
-            background-color: white;
-            color: #ff69b4;
-        }
-
-        .skills-card ul {
-            padding: 0 15px;
-        }
-
-        .skills-card ul li span {
-            font-weight: bold;
-        }
-
-        .skills-card ul li small {
-            color: #8f92a6;
-        }
-
-        /* Achievements Section */
-        .achievements-section {
-            padding: 50px 0;
-            background-color: var(--light-background);
-            color: var(--dark-text);
-            text-align: center;
-        }
-
-        .achievements-header h6 {
-            color: var(--primary-color);
-            font-size: 16px;
-            text-transform: uppercase;
-            margin-bottom: 10px;
-        }
-
-        .achievements-header h1 {
-            font-size: 36px;
-            margin-bottom: 40px;
-        }
-
-        .achievements-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            justify-content: center;
-        }
-
-        .achievement-card {
-            background-color: var(--card-bg);
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            text-align: center;
-        }
-
-        .achievement-card img {
-            width: 100%;
-            max-width: 250px;
-            height: auto;
-            margin-bottom: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .achievement-card h3 {
-            font-size: 20px;
-            margin-bottom: 10px;
-            color: var(--primary-color);
-        }
-
-        .achievement-card p {
-            font-size: 16px;
-            color: var(--dark-text);
-            line-height: 1.6;
-        }
-
-        /* Floating Sidebar */
-        .floating-sidebar {
-            position: fixed;
-            top: 50%;
-            left: 10px;
-            transform: translateY(-50%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            background-color: var(--primary-color);
-            padding: 15px;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-            z-index: 1000;
-        }
-
-        .floating-sidebar a {
-            margin: 10px 0;
-            text-decoration: none;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .floating-sidebar a img {
-            width: 30px;
-            height: 30px;
-            filter: invert(1); /* Makes the icons white for contrast */
-            transition: transform 0.2s, filter 0.2s;
-        }
-
-        .floating-sidebar a:hover img {
-            transform: scale(1.2);
-            filter: invert(0.8); /* Slight color shift on hover */
-        }
-
-        /* Contact Section Styles */
-        .contact-info {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 20px;
-            margin-bottom: 40px;
-        }
-
-        .social-icons {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-        }
-
-        .social-icons a {
-            text-decoration: none;
-            color: var(--white);
-            text-align: center;
-            display: block;
-        }
-
-        .social-icons img {
-            width: 50px;
-            height: 50px;
-            margin-bottom: 10px;
-            border-radius: 50%;
-            background-color: #ff69b4;
-            padding: 10px;
-        }
-
-        .social-icons span {
-            display: block;
-            font-size: 0.9rem;
-        }
-
-        @media (max-width: 768px) {
-            .contact-info {
-                flex-direction: column;
-                gap: 15px;
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Welcome to Judith Waithera's Portfolio, showcasing web development, AI projects, and achievements.">
+        <meta name="author" content="Judith Waithera">
+        <meta name="keywords" content="Portfolio, Web Development, AI Projects, Achievements, Judith Waithera, IT Graduate">
+        <title>Portfolio | Judith Waithera</title>
+    
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+        <!-- Font Awesome -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    
+        <!-- Favicon -->
+        <link rel="icon" href="icons/favicon.ico" type="image/x-icon">
+    
+        <!-- Custom Styles -->
+        <link rel="stylesheet" href="styles.scss">
+    
+        <!-- Additional Meta Tags for SEO -->
+        <meta property="og:title" content="Judith Waithera's Portfolio">
+        <meta property="og:description" content="Explore Judith Waithera's expertise in web development, AI projects, and technical achievements.">
+        <meta property="og:image" content="images/portfolio-preview.png">
+        <meta property="og:url" content="https://www.judith-portfolio.com">
+        <meta name="twitter:card" content="summary_large_image">
+    
+        <!-- Responsive Fonts -->
+        <style>
+            html {
+                font-size: 16px; /* Adjust for better typography scaling */
             }
-        }
-
-        /* Add these variables right after the General Reset section */
-        :root {
-            /* Light mode variables */
-            --bg-color: #f4f4f4;
-            --text-color: #333;
-            --card-bg: #fff;
-            --nav-bg: #343a40;
-        }
-
-        [data-theme="dark"] {
-            /* Dark mode variables */
-            --bg-color: #1a1a2e;
-            --text-color: #ffffff;
-            --card-bg: #16213e;
-            --nav-bg: #0f3460;
-        }
-
-        /* Add the theme toggle styles */
-        .theme-toggle {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 1001;
-            background: #333;
-            border: 2px solid #fff;
-            border-radius: 50%;
-            width: 45px;
-            height: 45px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 10px;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
-        }
-
-        [data-theme="dark"] .theme-toggle {
-            background: #fff;
-            border-color: #333;
-        }
-
-        .theme-toggle svg {
-            fill: #fff;
-            width: 20px;
-            height: 20px;
-        }
-
-        [data-theme="dark"] .theme-toggle svg {
-            fill: #333;
-        }
-
-        /* Card Animations */
-        .skills-card, 
-        .achievement-card,
-        .card {  /* for projects */
-            transition: all 0.3s ease-in-out;
-        }
-
-        .skills-card:hover, 
-        .achievement-card:hover,
-        .card:hover {
-            transform: translateY(-10px);
-            background-color: #ff69b4;
-            color: white !important;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        /* Ensure text remains visible on hover */
-        .skills-card:hover h3,
-        .achievement-card:hover h3,
-        .card:hover h5,
-        .card:hover p,
-        .skills-card:hover span,
-        .skills-card:hover small {
-            color: white !important;
-        }
-
-        /* Staggered entrance for cards */
-        .skills-container .skills-card,
-        .achievements-container .achievement-card,
-        .row .card {
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 0.5s ease forwards;
-        }
-
-        /* Stagger the animations */
-        .skills-container .skills-card:nth-child(1) { animation-delay: 0.1s; }
-        .skills-container .skills-card:nth-child(2) { animation-delay: 0.2s; }
-        .skills-container .skills-card:nth-child(3) { animation-delay: 0.3s; }
-        .skills-container .skills-card:nth-child(4) { animation-delay: 0.4s; }
-        .skills-container .skills-card:nth-child(5) { animation-delay: 0.5s; }
-
-        .achievements-container .achievement-card:nth-child(1) { animation-delay: 0.1s; }
-        .achievements-container .achievement-card:nth-child(2) { animation-delay: 0.2s; }
-        .achievements-container .achievement-card:nth-child(3) { animation-delay: 0.3s; }
-
-        .row .card:nth-child(1) { animation-delay: 0.1s; }
-        .row .card:nth-child(2) { animation-delay: 0.2s; }
-        .row .card:nth-child(3) { animation-delay: 0.3s; }
-
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Custom Project Button Styles */
-        .project-btn {
-            display: inline-block;
-            padding: 8px 20px;
-            margin: 5px;
-            border-radius: 30px;
-            text-decoration: none;
-            color: var(--primary-color);
-            border: 2px solid var(--primary-color);
-            transition: all 0.3s ease;
-            font-weight: 500;
-        }
-
-        .project-btn:hover {
-            background-color: var(--primary-color);
-            color: white;
-            transform: scale(1.05);
-            text-decoration: none;
-        }
-
-        /* Update the projects section cards to add some spacing */
-        .card-body .project-buttons {
-            margin-top: 15px;
-        }
-
-        .home-image {
-            max-width: 300px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        .home-image img {
-            width: 100%;
-            height: auto;
-            border: 4px solid var(--primary-color);
-            box-shadow: 0 0 20px rgba(0,0,0,0.2);
-        }
-
-        @media (max-width: 768px) {
-            .home-image {
-                max-width: 200px;
-                margin-top: 30px;
-            }
-        }
-    </style>
-</head>
+        </style>
+    </head>       
 <body>
     <!-- Navigation Bar -->
     <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
@@ -504,135 +44,192 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#home">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#about">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#projects">Projects</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#skills">Skills</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#achievements">Achievements</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#contact">Contact</a>
-                    </li>
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#achievements">Achievements</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
                 </ul>
             </div>
         </div>
     </nav>
-
-    <!-- Floating Sidebar -->
-    <div class="floating-sidebar">
-        <a href="https://www.linkedin.com/in/judith-waithera-306915270/" target="_blank"><img src="icons/linkedin.png" alt="LinkedIn"></a>
-        <a href="https://github.com/Jud-et" target="_blank"><img src="icons/github.png" alt="GitHub"></a>
-        <a href="https://twitter.com" target="_blank"><img src="icons/twitter.png" alt="Twitter"></a>
-    </div>
-
+  
     <!-- Home Section -->
-    <section id="home" class="home-section">
-        <div class="container text-center py-5">
+    <section id="home" class="home-section bg-primary text-light text-center py-5">
+        <div class="container">
             <div class="row align-items-center">
                 <div class="col-md-6">
-                    <h1>Welcome to My Portfolio</h1>
-                    <p class="intro-text">I'm <strong>Judith Waithera Karuku</strong>, a passionate IT Graduate with a passion for technology and innovation.</p>
-                    <p>Your journey to discover my work begins here.</p>
-                    <a href="https://drive.google.com/file/d/1-7pM8EaVjqPQAmoGf11_4s6v9jJc6cuu/view?usp=sharing" class="btn btn-primary" download>Download My CV</a>
+                    <h1 class="display-4">Welcome to My Portfolio</h1>
+                    <p class="lead">I'm <strong>Judith Waithera Karuku</strong>, a passionate IT Graduate with a passion for technology and innovation.</p>
+                    <a href="https://drive.google.com/file/d/1-7pM8EaVjqPQAmoGf11_4s6v9jJc6cuu/view?usp=sharing" class="btn btn-light btn-lg" download>Download My CV</a>
                 </div>
                 <div class="col-md-6">
-                    <div class="home-image">
-                        <img src="images/about/2.jpeg" alt="Judith Waithera" class="img-fluid rounded-circle">
-                    </div>
+                    <img src="images/about/2.jpeg" alt="Judith Waithera" class="img-fluid rounded-circle shadow-lg">
                 </div>
             </div>
         </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="about-section">
-        <div class="container text-center">
-            <h1>About</h1>
-            <div class="about-img">
-                <img src="images/about/1.jpeg" alt="Judith Waithera">
-            </div>
-            <div class="about-text">
-                <p> Hey there! I'm <strong>ChipJ</strong>, but you can also call me Judith. While my government name says one thing, I wear many hats – IT Graduate, Software Engineer, AI & Machine Learning enthusiast, Blockchain Developer, artist, daughter, sister, and of course, just me, Judith. I'm driven by curiosity and a passion to make systems better, always on the lookout for gaps to fill. With over two years of experience as a <strong>Software Engineer</strong>, <strong>Data Scientist</strong>, and <strong>Blockchain Developer</strong>, I'm excited about using my skills to create smarter, more efficient solutions. </p>
+    <section id="about" class="about-section bg-light py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <!-- About Image -->
+                <div class="col-md-6 text-center">
+                    <img src="images/about/1.jpeg" alt="Judith Waithera" class="img-fluid rounded-circle shadow-lg" style="width: 300px; height: auto;">
+                </div>
+                <!-- About Description -->
+                <div class="col-md-6 text-center text-md-start">
+                    <h1>About Me</h1>
+                    <p>
+                        Hey there! I'm <strong>Jud-et</strong>, but you can also call me Judith. While my government name says one thing, I wear many hats – IT Graduate, Software Engineer, AI & Machine Learning enthusiast, Blockchain Developer, artist, daughter, sister, and of course, just me, Judith.
+                    </p>
+                    <p>
+                        Over the years, I’ve honed my skills to create reliable, approachable software solutions and investigate the enormous potential of blockchain and artificial intelligence. My work focuses on developing more intelligent, effective systems that connect cutting-edge technology with everyday functioning.
+                    </p>
+                    <p>
+                        When I'm not working on technology, I like to explore the realm of creation, whether it be via writing, beadwork, art, or just rethinking what's possible. I'm committed to ongoing development and making a significant contribution to each project I work on.
+                    </p>
+                </div>
             </div>
         </div>
     </section>
-
+    
     <!-- Projects Section -->
-    <section id="projects" class="projects-section">
-        <div class="container py-5">
-            <h1>Projects</h1>
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="card">
-                        <img src="images/projects/1.jpeg" class="card-img-top" alt="Project 1">
-                        <div class="card-body text-center">
-                            <h5 class="card-title">Eco-city</h5>
-                            <p><strong>EcoCity</strong> was a winning competition project that allowed communities to propose, vote on, and support development ideas. Participants earn tokens for their contributions, fostering active engagement and pride in shaping a better community.</p>
-                            <div class="project-buttons">
-                                <a href="#" class="project-btn">Blog Post</a>
-                                <a href="https://github.com/Jud-et/Chain-Champions/tree/main/Ecocity" class="project-btn">Source Code</a>
-                                <a href="https://kfkfw-eiaaa-aaaap-qhv6a-cai.icp0.io" class="project-btn">Website</a>
+    <section id="projects" class="projects-section py-5">
+        <div class="container">
+            <h1 class="text-center mb-5">Projects</h1>
+            
+            <!-- Web Development Section -->
+            <section id="web-development" class="web-development-section py-5">
+                <div class="container">
+                    <h2 class="text-center mb-5">Web Development</h2>
+                    <div class="row g-4">
+                        <!-- Eco-city -->
+                        <div class="col-lg-3 col-md-6">
+                            <div class="card h-100 text-center">
+                                <img src="images/projects/1.jpeg" class="card-img-top" alt="Eco-city">
+                                <div class="card-body">
+                                    <h5 class="card-title">Eco-city</h5>
+                                    <p class="card-text">EcoCity was a winning competition project that allowed communities to propose and support development ideas.</p>
+                                    <div>
+                                        <a href="#" class="btn btn-outline-primary btn-sm">Blog Post</a>
+                                        <a href="https://github.com/Jud-et/Chain-Champions/tree/main/Ecocity" class="btn btn-outline-success btn-sm">Source Code</a>
+                                        <a href="https://kfkfw-eiaaa-aaaap-qhv6a-cai.icp0.io" class="btn btn-outline-warning btn-sm">Website</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- LOLFuncoin -->
+                        <div class="col-lg-3 col-md-6">
+                            <div class="card h-100 text-center">
+                                <img src="images/projects/2.png" class="card-img-top" alt="LOLFuncoin">
+                                <div class="card-body">
+                                    <h5 class="card-title">LOLFuncoin</h5>
+                                    <p class="card-text">LOLcoin was a fun and creative project for a meme-thon competition, aimed at bringing laughter and joy to the trading community.</p>
+                                    <div>
+                                        <a href="#" class="btn btn-outline-primary btn-sm">Blog Post</a>
+                                        <a href="https://github.com/Jud-et/Lol-Coins" class="btn btn-outline-success btn-sm">Source Code</a>
+                                        <a href="https://lolfun-coin-website.vercel.app/" class="btn btn-outline-warning btn-sm">Website</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Chip-Art -->
+                        <div class="col-lg-3 col-md-6">
+                            <div class="card h-100 text-center">
+                                <img src="images/projects/3.jpeg" class="card-img-top" alt="Chip-Art">
+                                <div class="card-body">
+                                    <h5 class="card-title">Chip-Art</h5>
+                                    <p class="card-text">Chip-Art Store is an eCommerce platform showcasing and selling handmade artifacts, blending art with everyday functionality.</p>
+                                    <div>
+                                        <a href="#" class="btn btn-outline-primary btn-sm">Blog Post</a>
+                                        <a href="https://github.com/Jud-et/Chip-beads" class="btn btn-outline-success btn-sm">Source Code</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Smart Tool -->
+                        <div class="col-lg-3 col-md-6">
+                            <div class="card h-100 text-center">
+                                <img src="images/projects/4.jpg" class="card-img-top" alt="Smart Tool">
+                                <div class="card-body">
+                                    <h5 class="card-title">Smart Tool</h5>
+                                    <p class="card-text">The Smart Watering System monitors soil moisture and controls a water pump, enabling automated and decentralized plant care.</p>
+                                    <div>
+                                        <a href="#" class="btn btn-outline-primary btn-sm">Blog Post</a>
+                                        <a href="https://github.com/Jud-et/rust_1" class="btn btn-outline-success btn-sm">Source Code</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- HealNet -->
+                        <div class="col-lg-3 col-md-6">
+                            <div class="card h-100 text-center">
+                                <img src="images/projects/5.jpg" class="card-img-top" alt="HealNet">
+                                <div class="card-body">
+                                    <h5 class="card-title">HealNet</h5>
+                                    <p class="card-text">HealNet is a decentralized AI chat model offering personalized advice and real-time support for users' recovery journeys.</p>
+                                    <div>
+                                        <a href="#" class="btn btn-outline-primary btn-sm">Blog Post</a>
+                                        <a href="https://github.com/Jud-et/HealNet" class="btn btn-outline-success btn-sm">Source Code</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Add more -->
+                    </div>
+                </div>
+            </section>
+            
+                    
+    
+            <!-- AI Projects Section -->
+            <div>
+                <h2 class="text-center mb-4">AI Portfolio</h2>
+                <div class="row g-4">
+                    <!-- Music -->
+                    <div class="col-lg-3 col-md-6">
+                        <div class="card h-100 text-center">
+                            <img src="images/projects/6.jpg" class="card-img-top" alt="Music AI">
+                            <div class="card-body">
+                                <h5 class="card-title">Music</h5>
+                                <p class="card-text">Experience AI-generated music compositions tailored to evoke emotion and enhance user experiences.</p>
+                                <a href="https://www.udio.com/songs/spc3oSGsV69UxdirDjxB8x" class="btn btn-primary">Find out more</a>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card">
-                        <img src="images/projects/2.png" class="card-img-top" alt="Project 2">
-                        <div class="card-body text-center">
-                            <h5 class="card-title">LOLFuncoin</h5>
-                            <p><strong>LOLcoin</strong> was a fun and creative project for a meme-thon competition, where we created a meme coin aimed at bringing laughter and joy to the trading community. It's a playful way to engage people in the world of crypto while keeping the vibes lighthearted and entertaining!</p>
-                            <div class="project-buttons">
-                                <a href="#" class="project-btn">Blog Post</a>
-                                <a href="https://github.com/Jud-et/Lol-Coins" class="project-btn">Source Code</a>
-                                <a href="https://lolfun-coin-website.vercel.app/" class="project-btn">Website</a>
+                    <!-- Images -->
+                    <div class="col-lg-3 col-md-6">
+                        <div class="card h-100 text-center">
+                            <img src="images/projects/8.jpg" class="card-img-top" alt="Images AI">
+                            <div class="card-body">
+                                <h5 class="card-title">Images</h5>
+                                <p class="card-text">Explore AI-powered image generation and enhancement for creative and commercial purposes.</p>
+                                <a href="https://firefly.adobe.com/shared/texttoimage?id=urn:aaid:sc:EU:a4c70740-9304-4f8c-96df-5f4466577061" class="btn btn-primary">Find out more</a>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card">
-                        <img src="images/projects/3.jpeg" class="card-img-top" alt="Project 3">
-                        <div class="card-body text-center">
-                            <h5 class="card-title">Chip-Art </h5>
-                            <p><strong>Chip-Art Store</strong> is an eCommerce platform showcasing and selling beautiful handmade artifacts, from intricate bead necklaces and stylish sweaters to cozy blankets and unique clothes. Each item is crafted with care, blending art with everyday functionality, offering customers something special and one-of-a-kind!</p>
-                            <div class="project-buttons">
-                                <a href="#" class="project-btn">Blog Post</a>
-                                <a href="https://github.com/Jud-et/Chip-beads" class="project-btn">Source Code</a>
+                    <!-- Videos -->
+                    <div class="col-lg-3 col-md-6">
+                        <div class="card h-100 text-center">
+                            <img src="images/projects/7.jpg" class="card-img-top" alt="Videos AI">
+                            <div class="card-body">
+                                <h5 class="card-title">Videos</h5>
+                                <p class="card-text">Dive into AI-assisted video editing and generation, revolutionizing the visual content creation process.</p>
+                                <a href="https://pika.art/video/bc133904-9ceb-4b5a-8136-3d02d041c9f2" class="btn btn-primary">Find out more</a>
                             </div>
                         </div>
                     </div>
-                </div>
-                     <div class="col-md-4">
-                    <div class="card">
-                        <img src="images/projects/4.jpg" class="card-img-top" alt="Smart-Tool">
-                        <div class="card-body text-center">
-                            <h5 class="card-title">Smart-Tool </h5>
-                            <p>The Smart Watering System monitors soil moisture and controls a water pump. Deployed on the Internet Computer (IC) blockchain, it enables automated and decentralized plant care.</p> <p><strong>Prerequisites:</strong> Knowledge of Rust, smart contract development, IC blockchain, and IoT devices like soil moisture sensors and pumps.</p>
-                            <div class="project-buttons">
-                                <a href="#" class="project-btn">Blog Post</a>
-                                <a href="https://github.com/Jud-et/rust_1" class="project-btn">Source Code</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card">
-                        <img src="images/projects/5.jpg" class="card-img-top" alt="Smart-Tool">
-                        <div class="card-body text-center">
-                            <h5 class="card-title"> <p><strong>Healnet</strong> is a Decentralized AI chat model that offers real-time support, personalized advice, and motivation to guide users through their recovery journey. Built for the UN  AI and anti-corruption hackathon, it connects users with essential resources based on data analysis.</p>
-                            <div class="project-buttons">
-                                <a href="#" class="project-btn">Blog Post</a>
-                                <a href="https://github.com/Jud-et/HealNet" class="project-btn">Source Code</a>
+                    <!-- Infographics -->
+                    <div class="col-lg-3 col-md-6">
+                        <div class="card h-100 text-center">
+                            <img src="images/projects/9.jpg" class="card-img-top" alt="Infographics AI">
+                            <div class="card-body">
+                                <h5 class="card-title">Infographics</h5>
+                                <p class="card-text">Utilized AI to create visually stunning and data-rich infographics that simplify complex information.</p>
+                                <a href="https://infogram.com/salaries-by-job-titles-and-seniority-1h7v4pddlmmdj4k?live" class="btn btn-primary">Find out more</a>
                             </div>
                         </div>
                     </div>
@@ -640,144 +237,137 @@
             </div>
         </div>
     </section>
+    
+    
 
     <!-- Skills Section -->
-    <section id="skills" class="skills-section">
+    <section id="achievements" class="achievements-section py-5 bg-light">
         <div class="container">
-            <div class="skills-header text-center">
-                <h6>Skills I Have</h6>
-                <h1>My Experience</h1>
-            </div>
-            <div class="skills-container">
-                <!-- Backend Development -->
-                <div class="skills-card">
-                    <h3>Backend Development</h3>
-                    <ul>
-                        <li><span>Python</span><small>Experienced</small></li>
-                        <li><span>Django</span><small>Experienced</small></li>
-                        <li><span>FastAPI</span><small>Experienced</small></li>
-                        <li><span>Selenium</span><small>Intermediate</small></li>
-                        <li><span>NodeJS</span><small>Experienced</small></li>
-                        <li><span>MySQL</span><small>Experienced</small></li>
-                        <li><span>PostgreSQL</span><small>Experienced</small></li>
-                        <li><span>Redis</span><small>Experienced</small></li>
-                    </ul>
-                </div>
-                <!-- Frontend Development -->
-                <div class="skills-card">
-                    <h3>Frontend Development</h3>
-                    <ul>
-                        <li><span>HTML</span><small>Experienced</small></li>
-                        <li><span>CSS</span><small>Experienced</small></li>
-                        <li><span>JavaScript</span><small>Experienced</small></li>
-                        <li><span>TypeScript</span><small>Experienced</small></li>
-                        <li><span>Bootstrap</span><small>Experienced</small></li>
-                        <li><span>ReactJS</span><small>Experienced</small></li>
-                        <li><span>NextJS</span><small>Experienced</small></li>
-                        <li><span>Sass</span><small>Experienced</small></li>
-                    </ul>
-                </div>
-                <!-- Data Science -->
-                <div class="skills-card">
-                    <h3>Data Science</h3>
-                    <ul>
-                        <li><span>Pandas</span><small>Experienced</small></li>
-                        <li><span>NumPy</span><small>Experienced</small></li>
-                        <li><span>Scikit-Learn</span><small>Experienced</small></li>
-                        <li><span>TensorFlow</span><small>Experienced</small></li>
-                        <li><span>Keras</span><small>Intermediate</small></li>
-                        <li><span>Matplotlib</span><small>Experienced</small></li>
-                        <li><span>Seaborn</span><small>Experienced</small></li>
-                        <li><span>SQL</span><small>Experienced</small></li>
-                    </ul>
-                </div>
-                <!-- Blockchain Development -->
-                <div class="skills-card">
-                    <h3>Blockchain Development</h3>
-                    <ul>
-                        <li><span>Smart Contracts</span><small>Experienced</small></li>
-                        <li><span>DApp Development</span><small>Experienced</small></li>
-                        <li><span>Token Development</span><small>Experienced</small></li>
-                        <li><span>Web3.js</span><small>Experienced</small></li>
-                        <li><span>Ethereum</span><small>Experienced</small></li>
-                        <li><span>NFT Development</span><small>Intermediate</small></li>
-                        <li><span>DeFi Protocols</span><small>Experienced</small></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Achievements Section -->
-    <section id="achievements" class="achievements-section">
-        <div class="container">
-            <div class="achievements-header text-center">
+            <div class="achievements-header text-center mb-5">
                 <h6>Achievements</h6>
                 <h1>My Certifications</h1>
             </div>
-            <div class="achievements-container">
-                <!-- Certificate 1 -->
-                <div class="achievement-card">
-                    <img src="certificates/1.png" alt="HealNet">
-                    <h3>Certificate in AI & De-centralized Ecommerce </h3> <p>Earned this certificate for building <strong>Healnet</strong>, an AI chat model designed to provide real-time support, personalized advice, and motivation.</p> </div>
-                <!-- Certificate 2 -->
-                <div class="achievement-card">
-                    <img src="certificates/2.png" alt="Full Stack Development">
-                    <h3>Full Stack Web Development & Canister Smart Contracts</h3> <p>Completed a challenging hackathon in full-stack web development, focusing on building canister smart contracts. Gained expertise in both frontend and backend technologies for decentralized applications.</p> </div>
-                <!-- Certificate 3 -->
-                <div class="achievement-card">
-                    <img src="certificates/3.png" alt="Xero ">
-                    <h3>Decentralized application Certification</h3>
-                    <p>Acknowledged for excelling in and becomming position two in the hackathon, project management  and backend development .</p>
+            <div class="row g-4">
+                <!-- Achievement 1 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="card h-100">
+                        <img src="certificates/1.png" class="card-img-top" alt="Certificate 1">
+                        <div class="card-body">
+                            <h5 class="card-title">AI & Decentralized E-Commerce</h5>
+                            <p class="card-text">Earned this certificate for building <strong>HealNet</strong>, an AI chat model designed to provide real-time support, personalized advice, and motivation.</p>
+                        </div>
+                    </div>
                 </div>
-                                <!-- Certificate 1 -->
-                <div class="achievement-card">
-                    <img src="certificates/1.png" alt="HealNet">
-                    <h3>Certificate in AI & De-centralized Ecommerce </h3> <p>Earned this certificate for building <strong>Healnet</strong>, an AI chat model designed to provide real-time support, personalized advice, and motivation.</p> </div>
-                <div class="achievement-card">
-                    <img src="certificates/4.png" alt="LOLcoin ">
-                    <h3>Token Creation and Deployment Certification</h3> <p>Awarded for managing the community and driving a 7% growth in social media platforms within three weeks while overseeing token creation and deployment.</p> </div>
-                                    
-                <div class="achievement-card">
-                    <img src="certificates/5.png" alt="Eco-city">
-                    <h3>Certificate in Full-Stack Web Application</h3> <p>Earned this certificate for leading the development of <strong>EcoCity</strong>, a project that won 1st place in a hackathon for a community-driven platform.</p>
+                <!-- Achievement 2 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="card h-100">
+                        <img src="certificates/2.png" class="card-img-top" alt="Certificate 2">
+                        <div class="card-body">
+                            <h5 class="card-title">Full Stack Web Development</h5>
+                            <p class="card-text">Completed a challenging hackathon in full-stack web development, focusing on building canister smart contracts for decentralized applications.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Achievement 3 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="card h-100">
+                        <img src="certificates/3.png" class="card-img-top" alt="Certificate 3">
+                        <div class="card-body">
+                            <h5 class="card-title">Decentralized Application Certification</h5>
+                            <p class="card-text">Acknowledged for excelling in a hackathon, achieving 2nd place in project management and backend development.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Achievement 4 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="card h-100">
+                        <img src="certificates/4.png" class="card-img-top" alt="Certificate 4">
+                        <div class="card-body">
+                            <h5 class="card-title">Token Creation & Deployment</h5>
+                            <p class="card-text">Awarded for managing the community and driving 7% social media growth in three weeks, while overseeing token creation and deployment.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Achievement 5 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="card h-100">
+                        <img src="certificates/5.png" class="card-img-top" alt="Certificate 5">
+                        <div class="card-body">
+                            <h5 class="card-title">Full-Stack Web Application</h5>
+                            <p class="card-text">Earned this certificate for leading the development of <strong>EcoCity</strong>, which won 1st place in a hackathon for community-driven platforms.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Achievement 6 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="card h-100">
+                        <img src="certificates/6.jpeg" class="card-img-top" alt="Certificate 6">
+                        <div class="card-body">
+                            <h5 class="card-title">Artificial Intelligence in Career Essentials</h5>
+                            <p class="card-text">Received recognition for mastering key concepts of Artificial Intelligence, its applications, and ethical considerations in career development.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Achievement 7 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="card h-100">
+                        <img src="certificates/7.jpeg" class="card-img-top" alt="Certificate 7">
+                        <div class="card-body">
+                            <h5 class="card-title">Bachelor of Science in Information Technology</h5>
+                            <p class="card-text">Graduated with a Bachelor’s degree in Information Technology from the <strong> The Co-operative University of Kenya</strong>, focusing on IT systems, Data Science, Software development, Human Computer Inteeraction, and innovation.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="contact-section">
-        <div class="container text-center py-5">
-            <h1>Contact Me</h1>
-            <p>Email: judithk859@gmail.com</p>
-            <p>Phone: +254705115421</p>
-            <div class="social-icons">
-                <a href="https://www.linkedin.com/in/judith-waithera-306915270/"><img src="icons/linkedin.png" alt="LinkedIn"><span>LinkedIn</span></a>
-                <a href="#"><img src="icons/twitter.png" alt="Twitter"><span>Twitter</span></a>
-                <a href="https://github.com/Jud-et"><img src="icons/github.png" alt="GitHub"><span>GitHub</span></a>
-                <a href="#"><img src="icons/medium.png" alt="Medium"><span>Medium</span></a>
-                <a href="#"><img src="icons/youtube.jpeg" alt="YouTube"><span>YouTube</span></a>
+    <section id="contact" class="contact-section py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h6>Contact Me</h6>
+                <h1>Let's Get in Touch</h1>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <div class="text-center mb-4">
+                        <p>Email: <a href="mailto:judithk859@gmail.com">judithk859@gmail.com</a></p>
+                        <p>Phone: <a href="tel:+254705115421">+254 705 115 421</a></p>
+                    </div>
+                    <div class="d-flex justify-content-center gap-4">
+                        <!-- LinkedIn -->
+                        <a href="https://www.linkedin.com/in/judith-waithera-306915270/" target="_blank" class="text-decoration-none">
+                            <img src="icons/linkedin.png" alt="LinkedIn" style="width: 50px; height: 50px;">
+                        </a>
+                        <!-- GitHub -->
+                        <a href="https://github.com/Jud-et" target="_blank" class="text-decoration-none">
+                            <img src="icons/github.png" alt="GitHub" style="width: 50px; height: 50px;">
+                        </a>
+                        <!-- YouTube -->
+                        <a href="https://www.youtube.com/" target="_blank" class="text-decoration-none">
+                            <img src="icons/youtube.jpeg" alt="YouTube" style="width: 50px; height: 50px;">
+                        </a>
+                        <!-- WhatsApp -->
+                        <a href="https://wa.me/254705115421" target="_blank" class="text-decoration-none">
+                            <img src="icons/whatsapp.jpeg" alt="WhatsApp" style="width: 50px; height: 50px;">
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
+    
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Trigger animations when elements come into view
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.animationPlayState = 'running';
-                }
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a.nav-link').forEach(link => {
+            link.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
             });
-        });
-
-        // Observe all cards
-        document.querySelectorAll('.skills-card, .achievement-card, .card').forEach(card => {
-            observer.observe(card);
-            card.style.animationPlayState = 'paused';
         });
     </script>
 </body>
