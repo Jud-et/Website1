@@ -31,6 +31,12 @@ body {
     transform: translateY(-10px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
+.card-text.description {
+    display: none;
+}
+.card:hover .card-text.description {
+    display: block;
+}
 
 .card-img-top {
     border-top-left-radius: 10px;
